@@ -19,6 +19,9 @@
 
 #include "scanner.h"
 
+namespace Doppio
+{
+
 Scanner::Scanner(const char* input, size_t length)
 {
     _beg = input;
@@ -230,3 +233,5 @@ void Scanner::advance()
 {
     _c0 = *(++_cur);
 }
+
+} /* Doppio namespace */

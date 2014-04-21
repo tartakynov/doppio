@@ -25,6 +25,9 @@
 #include <cstring>
 #include "token.h"
 
+namespace Doppio
+{
+
 class Scanner
 {
 public:
@@ -52,5 +55,7 @@ private:
     Token::Type scanNumber();
     void scan();
 };
+
+} /* Doppio namespace */
 
 #endif /* DOPPIO_SCANNER_H_ */

@@ -19,9 +19,14 @@
 
 #include "asserts.h"
 
+namespace Doppio
+{
+
 void assertionFailure(const char* file, const char* expression, int line)
 {
     fprintf(stderr, "*** ASSERTION FAILURE: %s (line %d)\n", file, line);
     fprintf(stderr, "*** REASON: %s\n", expression);
     exit(0);
 }
+
+} /* Doppio namespace */

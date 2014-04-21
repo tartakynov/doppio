@@ -19,6 +19,9 @@
 
 #include "token.h"
 
+namespace Doppio
+{
+
 #define T(name, string, precedence) #name,
 const char* const Token::tokenName[NUM_TOKENS] =
 { TOKEN_LIST(T, T) };
@@ -41,3 +44,4 @@ const bool Token::tokenIsKeyword[] =
 #undef T
 #undef K
 
+} /* Doppio namespace */

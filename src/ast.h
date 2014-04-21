@@ -25,18 +25,19 @@
 #include <cmath>
 #include "token.h"
 
+namespace Doppio
+{
+
 class AstNode
 {
 public:
     virtual ~AstNode()
     {
-        printf(")");
     }
 
 protected:
     AstNode()
     {
-        printf("(");
     }
 };
 
@@ -269,5 +270,7 @@ public:
         return _expression;
     }
 };
+
+} /* Doppio namespace */
 
 #endif /* DOPPIO_AST_H_ */

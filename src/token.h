@@ -22,6 +22,9 @@
 
 #include "asserts.h"
 
+namespace Doppio
+{
+
 #define TOKEN_LIST(T, K)                                                  \
     /* End of source indicator. */                                        \
     T(EOS, "EOS", 0)                                                      \
@@ -128,5 +131,7 @@ private:
     static const bool tokenIsKeyword[NUM_TOKENS];
     static const int tokenPrecedence[NUM_TOKENS];
 };
+
+} /* Doppio namespace */
 
 #endif /* DOPPIO_TOKEN_H_ */

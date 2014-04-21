@@ -19,6 +19,9 @@
 
 #include "parser.h"
 
+namespace Doppio
+{
+
 Parser::Parser(const char *input, size_t length) :
         Scanner(input, length)
 {
@@ -222,3 +225,5 @@ std::vector<Expression*> Parser::parseArgumentsExpression()
     expect(Token::RPAREN);
     return args;
 }
+
+} /* Doppio namespace */

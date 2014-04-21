@@ -23,8 +23,14 @@
 #include <cstdio>
 #include <cstdlib>
 
+namespace Doppio
+{
+
 void assertionFailure(const char* file, const char* expression, int line);
 
 #define ASSERT(exp) do { if (!(exp)) assertionFailure(__FILE__, #exp, __LINE__); } while (0)
 
+} /* Doppio namespace */
+
 #endif /* DOPPIO_ASSERTS_H_ */
+

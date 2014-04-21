@@ -23,7 +23,10 @@
 #include "ast.h"
 #include "scanner.h"
 
-class Parser : public Scanner
+namespace Doppio
+{
+
+class Parser : protected Scanner
 {
 private:
     void expect(Token::Type token);
@@ -44,5 +47,7 @@ public:
 
     Expression* parseExpression();
 };
+
+} /* Doppio namespace */
 
 #endif /* DOPPIO_PARSER_H_ */
