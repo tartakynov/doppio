@@ -30,6 +30,8 @@ void assertionFailure(const char* file, const char* expression, int line);
 
 #define ASSERT(exp) do { if (!(exp)) assertionFailure(__FILE__, #exp, __LINE__); } while (0)
 
+#define ASSERT_NOT_REACHED() do { assertionFailure(__FILE__, "Reached unreachable", __LINE__); } while (0)
+
 } /* Doppio namespace */
 
 #endif /* DOPPIO_ASSERTS_H_ */

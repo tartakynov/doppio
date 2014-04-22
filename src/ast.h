@@ -23,7 +23,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
+
 #include "token.h"
+#include "context.h"
 
 namespace Doppio
 {
@@ -53,6 +55,8 @@ public:
     {
         return false;
     }
+
+    virtual double evaluate(Context *context) const = 0;
 };
 
 class AssignmentExpression: public Expression
@@ -73,10 +77,13 @@ public:
     {
         return _target;
     }
+
     Expression* value() const
     {
         return _value;
     }
+
+    virtual double evaluate(Context *context) const;
 };
 
 class UnaryOperationExpression: public Expression
@@ -95,10 +102,13 @@ public:
     {
         return _operation;
     }
+
     Expression* expression() const
     {
         return _expression;
     }
+
+    virtual double evaluate(Context *context) const;
 };
 
 class BinaryOperationExpression: public Expression
@@ -119,14 +129,18 @@ public:
     {
         return _operation;
     }
+
     Expression* left() const
     {
         return _left;
     }
+
     Expression* right() const
     {
         return _right;
     }
+
+    virtual double evaluate(Context *context) const;
 };
 
 class FunctionExpression: public Expression
@@ -141,6 +155,8 @@ public:
             _identifier(identifier), _arguments(arguments)
     {
     }
+
+    virtual double evaluate(Context *context) const;
 };
 
 class Identifier: public Expression
@@ -153,6 +169,13 @@ public:
             _value(value)
     {
     }
+
+    std::string getValue() const
+    {
+    	return _value;
+    }
+
+    virtual double evaluate(Context *context) const;
 };
 
 class Number: public Expression
@@ -247,6 +270,8 @@ public:
     {
         return new Number(pow(c1.real(), c2.real()));
     }
+
+    virtual double evaluate(Context *context) const;
 };
 
 /* S t a t e m e n t s */

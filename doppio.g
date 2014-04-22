@@ -3,9 +3,7 @@ grammar doppio;
 // -----------------------------------------------------
 // Expressions
 // -----------------------------------------------------
-expression              :   assignment_expression;
-
-assignment_expression   :   additive_expression ('=' assignment_expression)*;
+expression              :   additive_expression;
 
 additive_expression     :   multiplicative_expression (('+'|'-') multiplicative_expression)*;
 
@@ -15,7 +13,7 @@ postfix_expression      :   primary_expression ( arguments_expression | '!' )*;
 
 primary_expression      :   IDENTIFIER | INT | FLOAT | '(' expression ')';
 
-arguments_expression    :   '(' assignment_expression (',' assignment_expression)* ')' | '(' ')';
+arguments_expression    :   '(' additive_expression (',' additive_expression)* ')' | '(' ')';
 	
 // -----------------------------------------------------
 // Tokens

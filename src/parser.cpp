@@ -56,24 +56,9 @@ void Parser::error(const char *msg)
 Expression* Parser::parseExpression()
 {
     /*
-     * expression:   assignment_expression;
+     * expression:   additive_expression;
      */
-    return parseAssignmentExpression();
-}
-
-Expression* Parser::parseAssignmentExpression()
-{
-    /*
-     * assignment_expression:   additive_expression ('=' assignment_expression)*;
-     */
-    Expression* result = parseBinaryExpression(4);
-    while (peek() == Token::ASSIGN)
-    {
-        Token::Type operation = next();
-        Expression* right = parseAssignmentExpression();
-        result = new AssignmentExpression(operation, result, right);
-    }
-    return result;
+    return parseAdditiveExpression();
 }
 
 Expression* Parser::parseBinaryExpression(int prec)
@@ -206,14 +191,14 @@ Expression* Parser::parsePrimaryExpression()
 std::vector<Expression*> Parser::parseArgumentsExpression()
 {
     /*
-     * arguments_expression:  '(' assignment_expression (',' assignment_expression)* ')' | '(' ')';
+     * arguments_expression:  '(' additive_expression (',' additive_expression)* ')' | '(' ')';
      */
     std::vector<Expression*> args;
     bool done = (peek() == Token::RPAREN);
     expect(Token::LPAREN);
     while (!done)
     {
-        Expression* argument = parseAssignmentExpression();
+        Expression* argument = parseAdditiveExpression();
         args.push_back(argument);
         done = (peek() == Token::RPAREN);
         // TODO check if too many arguments
